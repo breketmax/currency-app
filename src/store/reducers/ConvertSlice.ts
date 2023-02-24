@@ -28,7 +28,14 @@ const initialState: IConvertSlice = {
 const convertSlice = createSlice({
   initialState,
   name: 'convertSlice',
-  reducers: {},
+  reducers: {
+    setTo (state, action: PayloadAction<string>) {
+      state.query.to = action.payload;
+    },
+    setFrom (state, action: PayloadAction<string>) {
+      state.query.from = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchConvert.pending, (state) => {
@@ -57,3 +64,4 @@ const convertSlice = createSlice({
 });
 
 export default convertSlice.reducer;
+export const { setFrom, setTo, } = convertSlice.actions;
