@@ -18,7 +18,7 @@ IQuery,
           to,
         },
         headers: {
-          apikey: 'WkzwMIeQniL0ADiPwO1UglaJtBn1Y0ri',
+          apikey: 'HQFIrqQFEOVdVdOpOUJnLe5ldMkjkReI',
         },
       }
     );
@@ -44,7 +44,7 @@ IFetchRate,
           source,
         },
         headers: {
-          apikey: 'WkzwMIeQniL0ADiPwO1UglaJtBn1Y0ri',
+          apikey: 'HQFIrqQFEOVdVdOpOUJnLe5ldMkjkReI',
         },
       }
     );

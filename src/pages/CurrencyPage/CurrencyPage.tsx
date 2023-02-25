@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import CurrencyItem from '../../components/CurrencyItem/CurrencyItem';
+import Loading from '../../components/Loading/Loading';
 import Select from '../../components/Select/Select';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { fetchCurrencyRate } from '../../store/reducers/ActionCreator';
@@ -11,7 +12,7 @@ const CurrencyPage: React.FC = () => {
   const { from, } = useAppSelector(
     (state) => state.rootReducer.convertSlice.query
   );
-  const { quotes, } = useAppSelector(
+  const { quotes, isCourseRateLoading, source, } = useAppSelector(
     (state) => state.rootReducer.currencyRateSlice
   );
   const setDefaultFrom = (code: string): void => {
@@ -19,13 +20,16 @@ const CurrencyPage: React.FC = () => {
   };
 
   useEffect(() => {
-    void dispatch(
-      fetchCurrencyRate({
-        currencies: 'AED, AUD, CNY, GBP, JPY, KZT,RUB, UAH, USD, EUR',
-        source: from,
-      })
-    );
+    if (from !== source) {
+      void dispatch(
+        fetchCurrencyRate({
+          currencies: 'AED, AUD, CNY, GBP, JPY, KZT,RUB, UAH, USD, EUR',
+          source: from,
+        })
+      );
+    }
   }, [ from, ]);
+
   return (
     <div className="currency-page">
       <div className="container">
@@ -33,11 +37,17 @@ const CurrencyPage: React.FC = () => {
           <span className="select-title">Choose your currency</span>
           <Select setDefaultCode={setDefaultFrom} queryKey="from" />
         </div>
-        <div className="currencies-list">
-          {Object.keys(quotes).map((code) => (
-            <CurrencyItem code={code} value={quotes[code]} key={code} />
-          ))}
-        </div>
+        {isCourseRateLoading
+          ? (
+          <Loading />
+            )
+          : (
+          <div className="currencies-list">
+            {Object.keys(quotes).map((code) => (
+              <CurrencyItem code={code} value={quotes[code]} key={code} />
+            ))}
+          </div>
+            )}
       </div>
     </div>
   );

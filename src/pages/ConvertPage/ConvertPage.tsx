@@ -11,12 +11,14 @@ import {
 import { ReactComponent as Swap } from '../../image/swap.svg';
 import './ConvertPage.css';
 import { fetchConvert } from '../../store/reducers/ActionCreator';
+import Loading from '../../components/Loading/Loading';
 
 const ConvertPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const {
     query: { from, to, amount, },
     result,
+    isConvertLoading,
   } = useAppSelector((state) => state.rootReducer.convertSlice);
 
   const setDefaultFrom = (code: string): void => {
@@ -51,9 +53,10 @@ const ConvertPage: React.FC = () => {
             <Input
               disable={true}
               title="To"
-              value={(result * amount).toFixed(2)}
+              value={(result * amount).toFixed(3)}
             />
             <Select setDefaultCode={setDefaultTo} queryKey="to" />
+            {isConvertLoading ? <Loading /> : null}
           </div>
         </div>
       </div>

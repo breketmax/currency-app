@@ -18,7 +18,7 @@ const CurrencyItem: React.FC<ICurrencyItem> = ({ code, value, }) => {
       <div className="item-info">
         1<span className="code">{from}</span>
         <Equal />
-        {(1 / value).toFixed(2)}
+        {(1 / value).toFixed(3)}
         <span className="code">{to}</span>
       </div>
     </div>
