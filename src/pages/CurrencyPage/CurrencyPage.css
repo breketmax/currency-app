@@ -1,0 +1,18 @@
+.currencies-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 60px;
+}
+
+.choose-currency {
+  display: flex;
+  margin-bottom: 60px;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
+.select-title {
+  font-weight: 500;
+  font-size: 38px;
+}

@@ -45,15 +45,16 @@ input {
   height: 100vh;
   box-sizing: border-box;
 }
-.App.night {
-  color: var(--white);
-  background-color: var(--night);
+.code {
+  font-size: 32px;
+  line-height: 44px;
+  color: var(--gray);
+  font-weight: 500;
 }
-.App.night svg path {
-  fill: var(--white);
-}
-.App.night input {
-  color: var(--white);
+.title {
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--gray);
 }
 
 @media (min-width: 576px) {

@@ -1,5 +1,7 @@
 import React from 'react';
 import countries from '../../utils/countries-data';
+import { ReactComponent as Equal } from '../../image/equal.svg';
+import './CurrencyItem.css';
 
 interface ICurrencyItem {
   code: string
@@ -12,7 +14,13 @@ const CurrencyItem: React.FC<ICurrencyItem> = ({ code, value, }) => {
   const flagSource = countries.find((item) => item.code === from)?.flag;
   return (
     <div className="currency-item">
-      <img src={flagSource} alt="" />1{from} = {(1 / value).toFixed(2)} {to}
+      <img src={flagSource} alt="" />
+      <div className="item-info">
+        1<span className="code">{from}</span>
+        <Equal />
+        {(1 / value).toFixed(2)}
+        <span className="code">{to}</span>
+      </div>
     </div>
   );
 };

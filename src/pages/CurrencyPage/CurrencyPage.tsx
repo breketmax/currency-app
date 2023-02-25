@@ -4,6 +4,7 @@ import Select from '../../components/Select/Select';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { fetchCurrencyRate } from '../../store/reducers/ActionCreator';
 import { setFrom } from '../../store/reducers/ConvertSlice';
+import './CurrencyPage.css';
 
 const CurrencyPage: React.FC = () => {
   const dispatch = useAppDispatch();
