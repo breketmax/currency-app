@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CurrencyPage: React.FC = () => {
-  return <div>CURRENCY PAGE ))!)!)!)!)!)!</div>;
+  return <div className="currency-page"></div>;
 };
 
 export default CurrencyPage;

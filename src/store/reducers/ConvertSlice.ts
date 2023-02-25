@@ -15,8 +15,8 @@ const initialState: IConvertSlice = {
   },
   query: {
     amount: 0,
-    from: '',
-    to: '',
+    from: 'RUB',
+    to: 'USD',
   },
   result: 0,
   success: false,
@@ -35,6 +35,14 @@ const convertSlice = createSlice({
     setFrom (state, action: PayloadAction<string>) {
       state.query.from = action.payload;
     },
+    setAmount (state, action: PayloadAction<number>) {
+      state.query.amount = action.payload;
+    },
+    swapCurriences (state) {
+      const temp = state.query.to;
+      state.query.to = state.query.from;
+      state.query.from = temp;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -47,7 +55,6 @@ const convertSlice = createSlice({
         fetchConvert.fulfilled,
         (state, action: PayloadAction<IConvert>) => {
           state.info = action.payload.info;
-          state.query = action.payload.query;
           state.result = action.payload.result;
           state.success = action.payload.success;
           state.isConvertError = '';
@@ -64,4 +71,5 @@ const convertSlice = createSlice({
 });
 
 export default convertSlice.reducer;
-export const { setFrom, setTo, } = convertSlice.actions;
+export const { setFrom, setTo, setAmount, swapCurriences, } =
+  convertSlice.actions;

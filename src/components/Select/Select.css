@@ -1,0 +1,41 @@
+.hidden {
+  display: none;
+}
+.select-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+.custom-select {
+  position: relative;
+}
+.select-dropdown {
+  position: absolute;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  color: var(--gray);
+  font-weight: 500;
+  font-size: 24px;
+  cursor: pointer;
+  border-top: 1px solid var(--gray);
+}
+.option:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.selected-option {
+  border: none;
+  min-width: 110px;
+}
+.selected-option:hover {
+  background-color: transparent;
+}
+.option:last-child {
+  border-bottom: 1px solid var(--gray);
+}
+.option img {
+  width: 45px;
+  height: 45px;
+}

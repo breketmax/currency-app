@@ -1,41 +1,73 @@
 import React, { useEffect, useState } from 'react';
 import countries, { type ICountries } from '../../utils/countries-data';
+import './Select.css';
+import { ReactComponent as Dropdown } from '../../image/dropdown.svg';
+import { useAppSelector } from '../../hooks/hooks';
+import { type IQuery } from '../../types/IConvert';
 
 interface ISelectProps {
-  setDefaulCode: (code: string) => void
+  setDefaultCode: (code: string) => void
+  queryKey: keyof IQuery
 }
 
-const Select: React.FC<ISelectProps> = ({ setDefaulCode, }) => {
+const Select: React.FC<ISelectProps> = ({ setDefaultCode, queryKey, }) => {
   const [ countriesState, setCountriesState, ] = useState<ICountries[]>(countries);
+  const { query, } = useAppSelector((state) => state.rootReducer.convertSlice);
+  const [ isOpen, setIsOpen, ] = useState<boolean>(false);
   useEffect(() => {
-    const rndCounrty = Math.floor(Math.random() * 10);
-    const countriesCopy: ICountries[] = JSON.parse(JSON.stringify(countries));
-    countriesCopy[rndCounrty].selected = true;
-    setDefaulCode(countriesCopy[rndCounrty].code);
-    setCountriesState(countriesCopy);
+    setIsOpen(false);
   }, []);
 
+  const selectCode = (code: string, index: number): void => {
+    const countriesCopy: ICountries[] = JSON.parse(JSON.stringify(countries));
+    countriesCopy[index].selected = true;
+    setCountriesState(countriesCopy);
+    setDefaultCode(code);
+    setIsOpen(false);
+  };
+
   return (
-    <div className="custom-select">
-      <div className="selected-option option">
+    <div className="select-wrapper">
+      <div className="custom-select">
         {countriesState.map((item) =>
-          item.selected
+          item.code === query[queryKey]
             ? (
-            <h1 key={item.code}>
-              <img src={item.flag} alt="Flag" /> {item.code}
-            </h1>
+            <div
+              key={item.code}
+              className="selected-option option"
+              onClick={() => {
+                setIsOpen(!isOpen);
+              }}
+            >
+              <img src={item.flag} alt="Country flag" />
+              {item.code}
+            </div>
               )
             : null
         )}
+        <div className={isOpen ? 'select-dropdown' : 'select-dropdown hidden'}>
+          {countriesState.map((item, index) => (
+            <div
+              className="option"
+              key={item.code}
+              onClick={() => {
+                selectCode(item.code, index);
+              }}
+            >
+              <img src={item.flag} alt="Country flag" />
+              {item.code}
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="select-dropdown">
-        {countriesState.map((item) => (
-          <div className="option" key={item.code}>
-            <img src={item.flag} alt="Country flag" />
-            {item.code}
-          </div>
-        ))}
-      </div>
+      <button
+        className="open-dropdown"
+        onClick={() => {
+          setIsOpen(!isOpen);
+        }}
+      >
+        <Dropdown />
+      </button>
     </div>
   );
 };

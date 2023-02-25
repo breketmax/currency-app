@@ -1,0 +1,19 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.input-wrapper input {
+  font-family: var(--font-family);
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  color: var(--black);
+  max-width: 300px;
+  font-weight: 500;
+  font-size: 40px;
+  border-bottom: 1px solid var(--gray);
+  line-height: 46px;
+}
+.input-wrapper input:disabled {
+  background-color: transparent;
+}
