@@ -16,7 +16,7 @@ const Input: React.FC<IInput> = ({
 }) => {
   return (
     <div className="input-wrapper">
-      <span className="input-title">{title}</span>
+      <span className="input-title title">{title}</span>
       <input type="text" disabled={disable} onChange={onChange} value={value} />
     </div>
   );

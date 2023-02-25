@@ -18,6 +18,7 @@ const ConvertPage: React.FC = () => {
     query: { from, to, amount, },
     result,
   } = useAppSelector((state) => state.rootReducer.convertSlice);
+
   const setDefaultFrom = (code: string): void => {
     dispatch(setFrom(code));
   };

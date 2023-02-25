@@ -5,9 +5,11 @@ import {
   combineReducers
 } from '@reduxjs/toolkit';
 import convertSlice from './reducers/ConvertSlice';
+import currencyRateSlice from './reducers/CurrencyRateSlice';
 
 const rootReducer = combineReducers({
   convertSlice,
+  currencyRateSlice,
 });
 
 export const store = configureStore({
