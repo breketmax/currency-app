@@ -8,9 +8,14 @@ import { type IQuery } from '../../types/IConvert';
 interface ISelectProps {
   setDefaultCode: (code: string) => void
   queryKey: keyof IQuery
+  dataTestId: string
 }
 
-const Select: React.FC<ISelectProps> = ({ setDefaultCode, queryKey, }) => {
+const Select: React.FC<ISelectProps> = ({
+  setDefaultCode,
+  queryKey,
+  dataTestId,
+}) => {
   const [ countriesState, setCountriesState, ] = useState<ICountries[]>(countries);
   const { query, } = useAppSelector((state) => state.rootReducer.convertSlice);
   const [ isOpen, setIsOpen, ] = useState<boolean>(false);
@@ -33,6 +38,7 @@ const Select: React.FC<ISelectProps> = ({ setDefaultCode, queryKey, }) => {
           item.code === query[queryKey]
             ? (
             <div
+              data-testid={dataTestId}
               key={item.code}
               className="selected-option option"
               onClick={() => {
@@ -45,7 +51,11 @@ const Select: React.FC<ISelectProps> = ({ setDefaultCode, queryKey, }) => {
               )
             : null
         )}
-        <div className={isOpen ? 'select-dropdown' : 'select-dropdown hidden'}>
+        <div
+          className="select-dropdown"
+          hidden={!isOpen}
+          data-testid={`${dataTestId}-dropdown`}
+        >
           {countriesState.map((item, index) => (
             <div
               className="option"

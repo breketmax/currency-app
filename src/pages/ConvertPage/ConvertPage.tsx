@@ -43,10 +43,22 @@ const ConvertPage: React.FC = () => {
       <div className="container">
         <div className="conver-content">
           <div className="field">
-            <Input title="Amount" onChange={amountHandler} value={amount} />
-            <Select setDefaultCode={setDefaultFrom} queryKey="from" />
+            <Input
+              title="Amount"
+              onChange={amountHandler}
+              value={amount}
+              dataTestId="from-input"
+            />
+            <Select
+              setDefaultCode={setDefaultFrom}
+              queryKey="from"
+              dataTestId="from-select"
+            />
           </div>
-          <button onClick={() => dispatch(swapCurriences())}>
+          <button
+            onClick={() => dispatch(swapCurriences())}
+            data-testid="swap-btn"
+          >
             <Swap />
           </button>
           <div className="field">
@@ -54,8 +66,13 @@ const ConvertPage: React.FC = () => {
               disable={true}
               title="To"
               value={(result * amount).toFixed(3)}
+              dataTestId="disabled-input"
             />
-            <Select setDefaultCode={setDefaultTo} queryKey="to" />
+            <Select
+              setDefaultCode={setDefaultTo}
+              queryKey="to"
+              dataTestId="to-select"
+            />
             {isConvertLoading ? <Loading /> : null}
           </div>
         </div>

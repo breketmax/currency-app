@@ -35,7 +35,11 @@ const CurrencyPage: React.FC = () => {
       <div className="container">
         <div className="choose-currency">
           <span className="select-title">Choose your currency</span>
-          <Select setDefaultCode={setDefaultFrom} queryKey="from" />
+          <Select
+            setDefaultCode={setDefaultFrom}
+            queryKey="from"
+            dataTestId="currency-select"
+          />
         </div>
         {isCourseRateLoading
           ? (

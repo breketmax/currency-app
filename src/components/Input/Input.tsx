@@ -6,6 +6,7 @@ interface IInput {
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   title: string
   value?: number | string
+  dataTestId?: string
 }
 
 const Input: React.FC<IInput> = ({
@@ -13,11 +14,18 @@ const Input: React.FC<IInput> = ({
   title,
   onChange,
   value,
+  dataTestId,
 }) => {
   return (
     <div className="input-wrapper">
       <span className="input-title title">{title}</span>
-      <input type="text" disabled={disable} onChange={onChange} value={value} />
+      <input
+        data-testid={dataTestId}
+        type="text"
+        disabled={disable}
+        onChange={onChange}
+        value={value}
+      />
     </div>
   );
 };
