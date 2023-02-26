@@ -1,0 +1,22 @@
+.error {
+  border-radius: 45px;
+  background-color: var(--light-red);
+  color: var(--dark-red);
+  font-size: 64px;
+  line-height: 64px;
+  font-weight: 500;
+  text-align: center;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+.error svg {
+  width: 400px;
+  height: 400px;
+}
+.App .error svg path {
+  fill: none;
+}

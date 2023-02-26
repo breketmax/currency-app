@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { RouterProvider } from 'react-router-dom';
-import { router } from '../../utils/router';
+import { router } from '../utils/router';
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from '../../store/store';
+import { store } from '../store/store';
 
 describe('Test Convert page', () => {
   test('Disabled input', () => {
