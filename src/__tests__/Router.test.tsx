@@ -34,16 +34,6 @@ describe('Test routing', () => {
         <RouterProvider router={router} />
       </Provider>
     );
-    // const user = userEvent.setup();
-    // expect(screen.getByTestId('from-select')).toBeInTheDocument();
-    // await act(async () => {
-    //   await user.click(screen.getByText(/currency rate/i));
-    // });
-    // expect(screen.getByTestId('currency-select')).toBeInTheDocument();
-    // await act(async () => {
-    //   await user.click(screen.getByText(/convert currency/i));
-    // });
-    // expect(screen.getByTestId('from-select')).toBeInTheDocument();
     expect(screen.getByTestId('error')).toBeInTheDocument();
   });
 });

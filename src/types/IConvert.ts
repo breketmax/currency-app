@@ -15,3 +15,13 @@ interface IInfo {
   timestamp: number
   quote: number
 }
+
+export interface IConvertError {
+  error: IError
+  success: boolean
+}
+
+interface IError {
+  code: number
+  info: string
+}
